@@ -9,7 +9,12 @@ const forecast=(latitude,longitude,callback)=>{
         }else{
             const temp = body.current.temperature;
             const feels_like = body.current.feelslike;
-            callback(undefined,body.current.weather_descriptions[0]+`. It is currently ${temp} degrees out. It feels like ${feels_like} degrees out.`)
+            callback(undefined,{
+                weather:body.current.weather_descriptions[0],
+                temperature:`. It is currently ${temp} degrees out. It feels like ${feels_like} degrees out.`,
+                wind_speed:body.current.wind_speed,
+                humidity:body.current.humidity
+            })
         }
     })
 }
